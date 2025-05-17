@@ -18,8 +18,17 @@ def pesquisacep(cep):
     resposta = requests.get(url)
     return resposta.json()
 
+# endpoint - retorna a previsão do tempo 
+@app.route('/tempo', methods=['GET'])
+def tempo():
+    key = "c4380707dde242f4b78202712252204"
+    cidade = "Presidente Prudente"
+    url = f"https://api.weatherapi.com/v1/current.json?key={key}&q={cidade}&lang=pt"
+    resposta = requests.get(url)
+    return resposta.json()
+    
 
-'''
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-'''
