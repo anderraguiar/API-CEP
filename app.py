@@ -19,21 +19,31 @@ def pesquisacep(cep):
     return resposta.json()
 
 # endpoint - retorna a previsão do tempo 
-@app.route('/tempo', methods=['GET'])
+@app.route('/tempo', methods=['GET', 'POST'])
 def tempo():
     key = "c4380707dde242f4b78202712252204"
     cidade = "Presidente Prudente"
     url = f"https://api.weatherapi.com/v1/current.json?key={key}&q={cidade}&lang=pt"
     resposta = requests.get(url)
     result = resposta.json()
+    #return resposta.json()
 
     temperatura = result['current']['temp_c']
     umidade = result['current']['humidity']
+    velocidade_vento = result['current']['vis_km']
+    pressao_atm = result['current']['pressure_mb']
+    regiao = result['location']['region']
+    time_local = result['location']['localtime']
 
-    return render_template("paginatempo.html", 
-    temp=temperatura, umid=umidade)
+    return render_template("monitoramento.html", 
+    temperatura=temperatura, 
+    umidade=umidade,
+    pressure_mb=pressao_atm,
+    region=regiao,
+    localtime=time_local,
+    vis_km=velocidade_vento)
 
-    #return resposta.json()
+    
     
 
 

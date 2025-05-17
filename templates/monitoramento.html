@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Monitoramento de Ambiente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,23 +25,44 @@
             margin-bottom: 20px;
         }
         .dado {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 10px 0;
         }
         .dado strong {
-            font-size: 1.4em;
+            font-size: 1.3em;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 8px 12px;
+            font-size: 1em;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="painel">
         <h1>Monitoramento de Ambiente</h1>
+
+        <form method="POST">
+            <label for="cidade">Selecione uma cidade:</label><br>
+            <select name="cidade" id="cidade">
+                <option value="Sao Paulo">São Paulo</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Belo Horizonte">Belo Horizonte</option>
+                <option value="Curitiba">Curitiba</option>
+                <option value="Recife">Recife</option>
+            </select><br>
+            <button type="submit">Buscar</button>
+        </form>
+
         <div class="dado">🌡️ Temperatura: <strong>{{ temperatura }}°C</strong></div>
         <div class="dado">💧 Umidade: <strong>{{ umidade }}%</strong></div>
         <div class="dado">🕒 Hora Local: <strong>{{ localtime }}</strong></div>
         <div class="dado">📍 Região: <strong>{{ region }}</strong></div>
         <div class="dado">🌫️ Visibilidade: <strong>{{ vis_km }} km</strong></div>
-        <div class="dado">📊 Pressão: <strong>{{ pressure_mb }} mb</strong></div>
+        <div class="dado"><i class="fas fa-tachometer-alt"></i> Pressão: <strong>{{ pressure_mb }} mb</strong></div>
     </div>
 </body>
 </html>
