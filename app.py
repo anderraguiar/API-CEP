@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import requests
 
 app = Flask(__name__)
@@ -25,7 +25,15 @@ def tempo():
     cidade = "Presidente Prudente"
     url = f"https://api.weatherapi.com/v1/current.json?key={key}&q={cidade}&lang=pt"
     resposta = requests.get(url)
-    return resposta.json()
+    result = resposta.json()
+
+    temperatura = result['current']['temp_c']
+    umidade = result['current']['humidity']
+
+    return render_template("paginatempo.html", 
+    temp=temperatura, umid=umidade)
+
+    #return resposta.json()
     
 
 
