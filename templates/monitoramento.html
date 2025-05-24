@@ -48,21 +48,22 @@
         <form method="POST">
             <label for="cidade">Selecione uma cidade:</label><br>
             <select name="cidade" id="cidade">
-                <option value="Sao Paulo">São Paulo</option>
-                <option value="Rio de Janeiro">Rio de Janeiro</option>
-                <option value="Belo Horizonte">Belo Horizonte</option>
-                <option value="Curitiba">Curitiba</option>
-                <option value="Recife">Recife</option>
+                {% for opcao in opcoes %}
+                    <option value="{{ opcao }}" 
+                    {% if opcao == selecionado %} 
+                        selected 
+                    {% endif %}> {{ opcao }} </option>
+                {% endfor %}
             </select><br>
             <button type="submit">Buscar</button>
         </form>
 
         <div class="dado">🌡️ Temperatura: <strong>{{ temperatura }}°C</strong></div>
         <div class="dado">💧 Umidade: <strong>{{ umidade }}%</strong></div>
-        <div class="dado">🕒 Hora Local: <strong>{{ localtime }}</strong></div>
-        <div class="dado">📍 Região: <strong>{{ region }}</strong></div>
-        <div class="dado">🌫️ Visibilidade: <strong>{{ vis_km }} km</strong></div>
-        <div class="dado"><i class="fas fa-tachometer-alt"></i> Pressão: <strong>{{ pressure_mb }} mb</strong></div>
+        <div class="dado">🕒 Hora Local: <strong>{{ time_local }}</strong></div>
+        <div class="dado">📍 Região: <strong>{{ regiao }}</strong></div>
+        <div class="dado">🌫️ Visibilidade: <strong>{{ velocidade_vento }} km</strong></div>
+        <div class="dado"><i class="fas fa-tachometer-alt"></i> Pressão: <strong>{{ pressao_atm }} mb</strong></div>
     </div>
 </body>
 </html>

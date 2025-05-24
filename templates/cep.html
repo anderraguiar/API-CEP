@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Endereço por CEP</title>
+</head>
+<body>
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+        <h1>Pesquisa de Endereço</h1>
+        <form method="POST">
+            <label for="cep">Digite o CEP:</label>
+            <input type="text" id="cep" name="cep" maxlength="9" placeholder="Ex: 01001-000" required>
+            <button type="submit">Buscar</button>
+        </form>
+
+        <!-- Exibição do resultado (o backend vai renderizar aqui) -->
+        <div>
+            <p> {{ logradouro }}</p>
+            <p> {{ bairro }}</p>
+        </div>
+    </div>
+</body>
+</html>
